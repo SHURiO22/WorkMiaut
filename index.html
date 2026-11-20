@@ -42,7 +42,7 @@ input[type=checkbox]:checked{background:var(--yl) url("data:image/svg+xml,%3Csvg
 .xb{width:34px;height:34px;flex:none;border:2px solid #777;background:transparent;color:#aaa;font-size:15px;padding:0}
 .xb.on{background:var(--pk);border-color:var(--pk);color:var(--bk)}
 .n{flex:1;font-size:16px;font-weight:700}
-.s{font-weight:700;color:var(--yl);white-space:nowrap}
+.s{font-weight:700;color:var(--yl);white-space:nowrap;min-width:72px}
 .w{width:84px;padding:8px 6px;border:2px solid var(--yl);background:transparent;color:var(--yl);font-size:16px;font-weight:700;text-align:center;font-family:inherit}
 .w::placeholder{color:#777;font-weight:500}
 .row.done .n{text-decoration:line-through;opacity:.6}
@@ -65,7 +65,8 @@ summary{font-size:15px;color:var(--yl);font-weight:700}
 .prog{display:flex;justify-content:space-between;align-items:center}
 .rb{border:2px solid var(--bk);background:transparent;color:var(--bk);padding:6px 10px;font-weight:700;font-size:13px;font-family:inherit}
 .sw{display:flex;align-items:center;gap:8px;flex:1;min-width:0}
-.hb{flex:1;min-width:0;display:flex;gap:3px;height:32px;background:var(--yl);padding:3px}
+.bw{flex:1;min-width:0}
+.hb{flex:none;max-width:100%;display:flex;gap:3px;height:32px;background:var(--yl);padding:3px}
 .sq{flex:1;min-width:0;border:0;background:var(--bk);padding:0}
 .sq.f{background:var(--pk)}
 #tm{display:none;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));max-width:536px;margin:0 auto;background:var(--bk);color:var(--yl);padding:10px 12px;align-items:center;gap:8px;z-index:21;box-shadow:4px 4px 0 var(--yl)}
@@ -161,7 +162,7 @@ function sInfo(x,d,on){var n=nSer(x.s),dn=S.sd[x.id]||0,box=h("div",{className:"
    if(i+1>=n){S.st[x.id]=true;lastPop=x.id;burst(r,["#FFD23F","#ffffff","#FA4F9C"]);stopRest();if(d.e.every(function(y){return S.st[y.id]===true}))setTimeout(levelClear,250)}
    else{burst(r,["#FFD23F","#ffffff"]);startRest()}
    save();render()};hb.appendChild(q)})(i)}
- if(n)box.appendChild(hb);return box}
+ if(n){hb.style.width=(Math.min(n,5)/5*100)+"%";box.appendChild(h("div",{className:"bw"},[hb]))}return box}
 function render(){
  if(cur>=S.days.length)cur=S.days.length-1;if(cur<0)cur=0;
  var tabs=$("tabs");tabs.innerHTML="";
