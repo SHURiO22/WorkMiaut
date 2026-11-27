@@ -211,7 +211,7 @@ function nSer(s){var m=/^\s*(\d+)\s*[xX×]/.exec(s||"");return m?Math.min(+m[1],
 var AC=null,wl=null,rest=null,tmI=null,goT=null;
 function ac(){try{if(!AC)AC=new (window.AudioContext||window.webkitAudioContext)();if(AC.state==="suspended")AC.resume()}catch(e){}return AC}
 function blip(){var a=ac();if(!a)return;var t=a.currentTime,o=a.createOscillator(),g=a.createGain();o.type='square';o.frequency.value=880;g.gain.setValueAtTime(.5,t);g.gain.setValueAtTime(0,t+.1);o.connect(g);g.connect(a.destination);o.start(t);o.stop(t+.12)}
-function beep(){if(S.mute)return;var a=ac();if(!a)return;for(var i=0;i<8;i++){var t=a.currentTime+i*.3,o=a.createOscillator(),g=a.createGain();o.type="square";o.frequency.value=i%2?1175:880;g.gain.setValueAtTime(.9,t);g.gain.setValueAtTime(0,t+.2);o.connect(g);g.connect(a.destination);o.start(t);o.stop(t+.22)}}
+function beep(){if(S.mute)return;var a=ac();if(!a)return;for(var i=0;i<8;i++){var t=a.currentTime+i*.3,o=a.createOscillator(),g=a.createGain();o.type="square";o.frequency.value=i%2?1175:880;g.gain.setValueAtTime(.45,t);g.gain.setValueAtTime(0,t+.2);o.connect(g);g.connect(a.destination);o.start(t);o.stop(t+.22)}}
 function wlOn(){try{if(navigator.wakeLock&&!wl)navigator.wakeLock.request("screen").then(function(l){wl=l;l.addEventListener("release",function(){wl=null})}).catch(function(){})}catch(e){}}
 function wlOff(){try{if(wl){wl.release();wl=null}}catch(e){}}
 function drawTm(){var b=$("tm");if(!rest){b.style.display="none";document.body.classList.remove("tmon");return}
